@@ -1,0 +1,19 @@
+{
+  "name": "api-rest-libreria",
+  "version": "1.0.0",
+  "description": "API REST que permite manejar librerías y libros asociados a cada librería.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rmarting13/api-rest-libreria.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmarting13/api-rest-libreria/issues"
+  },
+  "homepage": "https://github.com/rmarting13/api-rest-libreria#readme"
+}
