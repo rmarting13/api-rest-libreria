@@ -1,16 +1,10 @@
 const express = require('express');
-
 const router = express.Router();
+const { userController } = require('../controllers');
 
-router.get('/:userId', (req, res) => {
-    const userId = req.params.userId;
-    res.send({ userId });
-});
+router.get('/', userController.createUserController);
 
-router.get('/', (req, res) => {
-    const name = req.query.name;
-    res.send({ name });
-});
+router.get('/:userId', userController.getUserController);
 
 router.post('/', (req, res) => {
     const { name, email, password } = req.body;

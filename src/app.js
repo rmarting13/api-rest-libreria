@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = 8090;
 const app = express();
+
 const { bookRouter, userRouter } = require('./routes');
-const { User } = require('./models');
+
 
 const { logging } = require('./middleware');
 const { initializeDB } = require('./config/dbConfig');

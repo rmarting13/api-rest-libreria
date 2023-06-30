@@ -1,7 +1,12 @@
-const userProvider = require('../providers/user');
+const userProvider = require('../providers/user'); // se necesita del provider de user, ya que este módulo es el encargado de crear un usuario
 
-const getUser = (id) => {
-    return { id, name: 'Jhon' };
+const getUser = async (userId) => {
+    const user = await userProvider.getUser(userId);
+    if (user) {
+        // Lógica de negocio
+        console.log('User Found');
+    }
+    return 
 }
 
 const createUser = async (user) => {
