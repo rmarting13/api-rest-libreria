@@ -5,4 +5,15 @@ const sequelize = new Sequelize({
     storage: './database.sqlite'
 });
 
-module.exports = sequelize;
+const initializeDB = async () => {
+    try {
+      await sequelize.authenticate();
+      await sequelize.query("SELECT 2+2  as result;");
+      console.log("Conexión a la base de datos establecida");
+      await sequelize.sync({ force: false });
+    } catch (error) {
+      console.error("Hubo un error al inicializar la base de datos", error);
+    }
+  };
+
+module.exports = { sequelize, initializeDB };
