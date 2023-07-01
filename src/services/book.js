@@ -1,11 +1,14 @@
-const fs = require('fs');
+const { bookProvider, libraryProvider } = require('../providers');
 
 
-const createBook = (id, book) => {
-    const bookfile = `book-${id}.json`;
-    if (fs.existsSync(bookfile)) throw new Error ('File Exists');
-    fs.writeFileSync(bookfile, JSON.stringify(req.body));
-    return book;
+const createBook = async (libraryId, book) => {
+    const library = await libraryProvider.getLibrary(libraryId);
+    if (library){
+        const newBook = await bookProvider.createBook(libraryId, book);    
+        return book;
+    } else {
+        return null;
+    }
 }
 
 const getBook = (req, res) => {

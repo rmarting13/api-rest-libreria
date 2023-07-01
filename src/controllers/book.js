@@ -1,22 +1,30 @@
 const { bookService } = require('../services');
 
-const createBookController = (req, res) => {
+const createBookController = async (req, res) => {
     try {
-        const newBook = service.bookService.createBook(req.params.bookId, req.body);
+        const newBook = await bookService.createBook(req.body);
         res.json(newBook);
-    } catch (err) {
-        res.status(400).json({ action: 'createBook', error: err.message });
+    } catch (error) {
+        res.status(500).json({ action: 'createBook', error: err.message });
     }
 };
 
-const getBookController = (req, res) => {
-    console.log(`Book found with id ${req.params.bookId}`);
-    res.json({id: req.params.bookId, name: "Lord of the rings"});
+const getBookController = async (req, res) => {
+    try {
+        const book = await bookService.getBook(req.params.bookId);
+        if (!book) {
+            res.status(404).json({ action: 'getBook', error: 'Book Not Found' });
+        }
+        else {
+            res.json(book);
+        }
+    } catch (error) {
+        res.status(500).json({ action: 'getBook', error: error.message });
+    }
 };
 
 const updateBookController = (req, res) => {
-    console.log(`Book found with id ${req.params.bookId}`);
-    res.json({ id: req.params.bookId, ...req.body});
-}
+    
+};
 
 module.exports = {createBookController, getBookController, updateBookController};
