@@ -1,13 +1,8 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/dbConfig');
+const { sequelize } = require('../config/dbConfig');
 const Book = require('./book');
 
 const Library = sequelize.define('Library', {
-    id: {
-        type: DataTypes.INTEGER,
-        primarykey: true,
-        autoIncrement: true
-    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,6 +18,6 @@ const Library = sequelize.define('Library', {
 });
 
 Library.hasMany(Book, {onDelete: 'SET NULL'})
-Book.belogsTo(Library);
+Book.belongsTo(Library);
  
 module.exports = Library;

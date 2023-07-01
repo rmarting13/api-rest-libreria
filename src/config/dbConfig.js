@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
 const initializeDB = async () => {
     try {
       await sequelize.authenticate();
-      await sequelize.query("SELECT 2+2  as result;");
+  //  await sequelize.query("escribir aquí una consulta SQL");
       console.log("Conexión a la base de datos establecida");
       await sequelize.sync({ force: false });
     } catch (error) {

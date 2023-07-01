@@ -1,12 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/dbConfig');
+const { sequelize } = require('../config/dbConfig');
 
 const Book = sequelize.define('Book', {
-    id: {
-        type: DataTypes.INTEGER,
-        primarykey: true,
-        autoIncrement: true
-    },
     isbn: {
         type: DataTypes.INTEGER,
         undefined: true,
@@ -25,6 +20,11 @@ const Book = sequelize.define('Book', {
     year: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: true
     }
 });
 

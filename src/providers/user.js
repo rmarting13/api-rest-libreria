@@ -19,4 +19,17 @@ const getUser = async (userId) => {
     }
 };
 
-module.exports = { createUser, getUser };
+const validateUser = async (user, password) => {
+    try {
+        const user = await User.findAll({ where: { userName: user, password}});
+        if (user) {
+            return user;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = { createUser, getUser, validateUser };
