@@ -13,13 +13,16 @@ const createLibrary = async (library) => {
     return await libraryProvider.createLibrary(library);
 };
 
-const upadteLibrary = (libraryId, library) => {
-    // LLamada al provider con el objeto user
-    return null;
+const getLibraries = async (options) => {
+    return await libraryProvider.getLibraries(options);
 };
 
-const deleteLibrary = (libraryId) => {
-    return `Deleted Library: ${id}`;
+const upadteLibrary = async (libraryId, library) => {
+    return await libraryProvider.updateLibrary(libraryId, library);
+};
+
+const deleteLibrary = async (libraryId) => {
+    return await libraryProvider.deleteLibrary(libraryId);
 };
 
 

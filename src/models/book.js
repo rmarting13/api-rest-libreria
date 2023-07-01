@@ -24,7 +24,7 @@ const Book = sequelize.define('Book', {
     active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        default: true
+        defaultValue: true
     }
 });
 

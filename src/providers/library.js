@@ -12,7 +12,7 @@ const createLibrary = async (library) => {
 
 const getLibrary = async (libraryId) => {
     try {
-        const library = await libraryId.findByPk(libraryIdId, { include: { all: true}});
+        const library = await Library.findByPk(libraryIdId, { include: { all: true}});
         return library;
     } catch (error) {
         console.error('Error during fetching Library: ', error);
@@ -46,7 +46,12 @@ const updateLibrary = async (libraryId, library) => {
 const deleteLibrary = async (libraryId) => {
     try {
         await getLibrary(libraryId);
-        return await Library.destroy({ where: { id: libraryId}});
+        const [rowsUpdated] = await Library.update(
+            {active: false},
+            { where: { id: libraryId}}
+        );
+        console.log(`${rowsUpdated} row was deleted (deactivated) on DB`);
+        return Library.findByPk(libraryId);
     } catch (error) {
         throw error;
     }

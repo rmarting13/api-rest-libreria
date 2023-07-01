@@ -16,9 +16,7 @@ const getBook = (req, res) => {
     res.json({id: req.params.bookId, name: "Lord of the rings"});
 };
 
-const updateBook = (req, res) => {
-    console.log(`Book found with id ${req.params.bookId}`);
-    res.json({ id: req.params.bookId, ...req.body});
+const updateBook = async (bookId, book) => {
+        return await bookProvider.updateBook(bookId, book); 
 };
-
 module.exports = { createBook };

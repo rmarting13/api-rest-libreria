@@ -14,6 +14,11 @@ const Library = sequelize.define('Library', {
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
     }
 });
 
